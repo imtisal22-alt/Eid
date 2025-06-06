@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eid ul Azha Mubarak</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #2a7f62;
+            margin-bottom: 20px;
+        }
+        
+        .eid-moon {
+            font-size: 60px;
+            margin: 20px 0;
+        }
+        
+        .page {
+            display: none;
+            animation: fadeIn 1s;
+        }
+        
+        .active {
+            display: block;
+        }
+        
+        input {
+            padding: 12px 15px;
+            width: 70%;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            transition: border 0.3s;
+            margin-bottom: 15px;
+        }
+        
+        input:focus {
+            border-color: #2a7f62;
+        }
+        
+        button {
+            background-color: #2a7f62;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 15px 0;
+            transition: background-color 0.3s;
+            width: 200px;
+        }
+        
+        button:hover {
+            background-color: #1e6b4e;
+        }
+        
+        .wish-content {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #555;
+            margin: 20px 0;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .decoration {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            font-size: 24px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .progress-dots {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin: 0 5px;
+        }
+        
+        .dot.active {
+            background-color: #2a7f62;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Page 1: Name Input -->
+        <div class="page active" id="namePage">
+            <div class="eid-moon">🌙</div>
+            <h1>Eid ul Azha Mubarak!</h1>
+            <p>Enter your friend's name (or leave blank for general wishes):</p>
+            <input type="text" id="friendName" placeholder="Friend's name">
+            <button onclick="nextPage()">Continue</button>
+            <div class="progress-dots">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+        
+        <!-- Page 2: Wish 1 -->
+        <div class="page" id="wish1Page">
+            <div class="decoration">
+                <span>🌙</span>
+                <span>🕌</span>
+                <span>🐑</span>
+            </div>
+            <div class="wish-content" id="wish1Content"></div>
+            <button onclick="nextPage()">Next Wish</button>
+            <div class="progress-dots">
+                <div class="dot"></div>
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+        
+        <!-- Page 3: Wish 2 -->
+        <div class="page" id="wish2Page">
+            <div class="decoration">
+                <span>🕋</span>
+                <span>🙏</span>
+                <span>🌟</span>
+            </div>
+            <div class="wish-content" id="wish2Content"></div>
+            <button onclick="nextPage()">Next Wish</button>
+            <div class="progress-dots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot active"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+        
+        <!-- Page 4: Wish 3 -->
+        <div class="page" id="wish3Page">
+            <div class="decoration">
+                <span>✨</span>
+                <span>🎉</span>
+                <span>🕊️</span>
+            </div>
+            <div class="wish-content" id="wish3Content"></div>
+            <button onclick="nextPage()">Start Again</button>
+            <div class="progress-dots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot active"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const wishes = [
+            {
+                personalized: `May Allah shower you with countless blessings on this Eid ul Azha and always! 🌟
+                May your life be filled with happiness, prosperity, and good health.
+                May all your prayers be answered and your sacrifices accepted. 🕋`,
+                general: `May the divine blessings of Allah bring hope, faith, and joy on this Eid ul Azha and forever. 🕌
+                May this sacred occasion inspire us to follow the path of righteousness and compassion.`
+            },
+            {
+                personalized: `Wishing you a joyful and peaceful Eid ul Azha! 🕊️
+                May this special day bring warmth and love to your heart and home.
+                May Allah bless you with success and happiness in this life and the hereafter. 🌙`,
+                general: `May this Eid bring joy and happiness to every household and peace to every heart. 👨‍👩‍👧‍👦
+                May the spirit of Eid fill homes with warmth and lives with countless blessings.`
+            },
+            {
+                personalized: `May your sacrifices be accepted and your devotion rewarded on this blessed Eid. 🐏
+                May Allah grant you strength, patience, and faith throughout your life's journey.
+                Wishing you and your family a very happy Eid ul Azha! 🌟`,
+                general: `May this Eid be an occasion for spiritual growth and divine blessings for all believers. 🙏
+                May we learn the true lessons of sacrifice, obedience, and devotion from this holy occasion.`
+            }
+        ];
+        
+        let currentPage = 1;
+        let friendName = "";
+        
+        function nextPage() {
+            if (currentPage === 1) {
+                // Coming from name page
+                friendName = document.getElementById('friendName').value.trim();
+                prepareWishes();
+            }
+            
+            // Hide current page
+            document.querySelector('.page.active').classList.remove('active');
+            
+            // Reset if we've shown all wishes
+            if (currentPage >= 4) {
+                currentPage = 1;
+                document.getElementById('friendName').value = '';
+                document.getElementById('namePage').classList.add('active');
+                updateProgressDots(1);
+                return;
+            }
+            
+            // Show next page
+            currentPage++;
+            const nextPageId = currentPage === 2 ? 'wish1Page' : 
+                              currentPage === 3 ? 'wish2Page' : 'wish3Page';
+            document.getElementById(nextPageId).classList.add('active');
+            updateProgressDots(currentPage);
+        }
+        
+        function prepareWishes() {
+            const hasName = friendName !== '';
+            
+            // Prepare all three wishes
+            for (let i = 0; i < 3; i++) {
+                const wishContent = document.getElementById(`wish${i+1}Content`);
+                let wishText = hasName ? 
+                    `<p>Dear ${friendName},</p><p>${wishes[i].personalized}</p><p>Eid Mubarak! ✨</p>` :
+                    `<p>${wishes[i].general}</p><p>Eid ul Azha Mubarak! 🌙</p>`;
+                wishContent.innerHTML = wishText;
+            }
+        }
+        
+        function updateProgressDots(pageNumber) {
+            const dots = document.querySelectorAll('.progress-dots .dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === pageNumber - 1);
+            });
+        }
+    </script>
+</body>
+</html>
